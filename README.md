@@ -1,1 +1,0 @@
-# BOT-Shreyasi-Python-Development-Intern-Skill-Evaluation
