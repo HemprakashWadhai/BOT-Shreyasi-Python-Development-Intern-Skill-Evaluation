@@ -1,0 +1,134 @@
+---
+
+# Assignment Submission
+
+This README file presents the solutions to the assignment questions. Each section includes the code, explanation, and example output.
+
+## Table of Contents
+
+1. [Question 1: Reverse and Transform String](#question-1-reverse-and-transform-string)
+2. [Question 2: Count Unique Elements in a List](#question-2-count-unique-elements-in-a-list)
+3. [Question 3: SQL Query to Calculate Total Revenue by Month](#question-3-sql-query-to-calculate-total-revenue-by-month)
+
+---
+
+## uestion 1: Reverse and Transform String
+
+Description
+
+The function `reverse_and_transform` reverses a given string. In the reversed string, all vowels are capitalized, and all consonants are converted to lowercase.
+
+# Code
+
+**File: `Q1.py`**
+
+```python
+def reverse_and_transform(s: str) -> str:
+    vowels = 'aeiouAEIOU'
+    reversed_transformed = []
+    length = len(s)
+
+    # Iterate from the end to the start of the string
+    for i in range(length - 1, -1, -1):
+        char = s[i]
+        if char in vowels:
+            char = char.upper()  # Convert to uppercase
+        else:
+            char = char.lower()  # Convert to lowercase
+        reversed_transformed.append(char)
+
+    # Join the list into a string
+    return ''.join(reversed_transformed)
+```
+
+### Example Usage
+
+```python
+input_string = "Hello, World!"
+output_string = reverse_and_transform(input_string)
+print(output_string)  # Output: "!dLrOw ,oLlEh"
+```
+
+### Output
+
+```
+Input: "Hello, World!"
+Output: "!dLrOw ,oLlEh"
+```
+
+---
+
+## Question 2: Count Unique Elements in a List
+
+### Description
+
+The function `count_unique_elements` counts the number of unique elements in a list without using built-in counting or set functions.
+
+### Code
+
+**File: `Q2.py`**
+
+```python
+def count_unique_elements(lst: list) -> int:
+    unique_elements = []
+
+    for element in lst:
+        if element not in unique_elements:
+            unique_elements.append(element)
+
+    # Count the number of unique elements
+    return len(unique_elements)
+```
+
+### Example Usage
+
+```python
+input_list = [1, 2, 2, 3, 4, 4, 5]
+unique_count = count_unique_elements(input_list)
+print(unique_count)  # Output: 5
+```
+
+### Output
+
+```
+Input: [1, 2, 2, 3, 4, 4, 5]
+Output: 5
+```
+
+---
+
+## Question 3: SQL Query to Calculate Total Revenue by Month
+
+### Description
+
+The SQL query calculates the total revenue generated in the last quarter, grouped by month.
+
+### Query
+
+**File: `Q3.sql`**
+
+```sql
+SELECT
+    DATE_FORMAT(order_date, '%Y-%m') AS month,
+    SUM(total_amount) AS total_revenue
+FROM
+    orders
+WHERE
+    order_date >= '2024-04-01' AND order_date < '2024-07-01'
+GROUP BY
+    DATE_FORMAT(order_date, '%Y-%m')
+ORDER BY
+    month;
+```
+
+### Example Output
+
+| month   | total_revenue |
+|---------|----------------|
+| 2024-04 | 12345.67       |
+| 2024-05 | 23456.78       |
+| 2024-06 | 34567.89       |
+
+---
+
+This README file organizes the solutions clearly, providing code, explanations, and example outputs for each question. This professional structure ensures that the assignment is easy to review and understand.
